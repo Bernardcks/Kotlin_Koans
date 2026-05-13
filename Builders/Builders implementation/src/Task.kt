@@ -13,13 +13,20 @@ fun table(init: TABLE.() -> Unit): TABLE {
 
 class TABLE : Tag("table") {
     fun tr(init: TR.() -> Unit) {
-        /* TODO */
+        val tableRow = TR()
+        tableRow.init()
+        children.add(tableRow)
     }
 }
 
 class TR : Tag("tr") {
+    // Usage of apply to make this easier, if you see a creation of variable followed by invoking a method,
+    // likely a smell to use "apply"
+    // children += TD().apply(init)
     fun td(init: TD.() -> Unit) {
-        /* TODO */
+        val tableData = TD()
+        tableData.init()
+        children.add(tableData)
     }
 }
 
